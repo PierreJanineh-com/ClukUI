@@ -11,7 +11,7 @@ ClukUI is a Swift package designed to provide elegant and easy-to-integrate cloc
 - Adaptive design for iOS, tvOS and macOS
 
 ## Requirements
-- iOS 14.0+ / macOS 11.0+
+- iOS 13.0+ / macOS 10.14+ / tvOS 13.0+
 - Xcode 12.0+
 - Swift 5.3+
 
