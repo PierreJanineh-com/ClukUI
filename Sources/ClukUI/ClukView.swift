@@ -9,7 +9,11 @@ import SwiftUI
 
 public struct ClukView: View {
     
-    @Binding var now: Date
+    @Binding private var now: Date
+    
+    public init(now: Binding<Date>) {
+        self._now = now
+    }
     
     private let timer = Timer.publish(
         every: 1,
