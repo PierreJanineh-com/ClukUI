@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ClukView: View {
     
-    @State private var now = Date()
+    @Binding var now: Date
     
     private let timer = Timer.publish(
         every: 1,
@@ -81,5 +81,5 @@ private struct ClukHand: Shape {
 }
 
 #Preview {
-    ClukView()
+    ClukView(now: .constant(.init()))
 }
