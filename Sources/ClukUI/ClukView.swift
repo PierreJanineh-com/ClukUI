@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ClukView: View {
+public struct ClukView: View {
     
     @Binding var now: Date
     
@@ -17,7 +17,7 @@ struct ClukView: View {
         in: .common
     ).autoconnect()
     
-    var body: some View {
+    public var body: some View {
         VStack {
             if #available(iOS 14.0, tvOS 14.0, macOS 11.0, *) {
                 Text(now, style: .time)
