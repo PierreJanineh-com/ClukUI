@@ -19,7 +19,7 @@ struct ClukView: View {
     
     var body: some View {
         VStack {
-            if #available(iOS 14.0, *) {
+            if #available(iOS 14.0, tvOS 14.0, macOS 11.0, *) {
                 Text(now, style: .time)
             } else {
                 Text(now.description)
