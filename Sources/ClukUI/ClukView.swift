@@ -9,10 +9,18 @@ import SwiftUI
 
 public struct ClukView: View {
     
-    @Binding private var now: Date
+    @State private var date: Date
     
-    public init(now: Binding<Date>) {
-        self._now = now
+    /**
+     Creates an analog clock view.
+     - Parameter date: A Date instance, pass `nil` for default value = `Date()`.
+     */
+    public init(date: Date? = nil) {
+        guard let date = date else {
+            self._date = .init(initialValue: Date())
+            return
+        }
+        self._date = .init(initialValue: date)
     }
     
     private let timer = Timer.publish(
@@ -24,9 +32,9 @@ public struct ClukView: View {
     public var body: some View {
         VStack {
             if #available(iOS 14.0, tvOS 14.0, macOS 11.0, *) {
-                Text(now, style: .time)
+                Text(date, style: .time)
             } else {
-                Text(now.description)
+                Text(date.description)
             }
             
             ZStack {
@@ -34,56 +42,40 @@ public struct ClukView: View {
                     .stroke(lineWidth: 2)
                 
                 // Hour hand
-                ClukHand(rotationAngle: .degrees(hourAngle),
+                ClukHand(rotationAngle: .degrees(calculateAngle(.hour)),
                          length: 50)
                 .stroke(lineWidth: 4)
                 
                 // Minute hand
-                ClukHand(rotationAngle: .degrees(minuteAngle),
+                ClukHand(rotationAngle: .degrees(calculateAngle(.minute)),
                          length: 70)
                 .stroke(lineWidth: 3)
                 
                 // Second hand
-                ClukHand(rotationAngle: .degrees(secondAngle),
+                ClukHand(rotationAngle: .degrees(calculateAngle(.second)),
                          length: 90)
                 .stroke(Color.red, lineWidth: 2)
             }
             .frame(width: 200, height: 200)
             .onReceive(timer) { input in
-                now = input
+                date = input
             }
         }
     }
     
-    private var hourAngle: Double {
-        let hour = Double(Calendar.current.component(.hour, from: now))
-        return (hour / 12) * 360
-    }
-    
-    private var minuteAngle: Double {
-        let minutes = Double(Calendar.current.component(.minute, from: now))
-        return (minutes / 60) * 360
-    }
-    
-    private var secondAngle: Double {
-        let seconds = Double(Calendar.current.component(.second, from: now))
-        return (seconds / 60) * 360
+    /**
+     Calculates clock hands angles in ticking style.
+     - Parameter component: the Calendar.Component (.hour, .minute, .second) for the clock hand.
+     */
+    private func calculateAngle(_ component: Calendar.Component) -> Double {
+        let componentValue = Double(Calendar.current.component(component, from: date))
+        let division: Double = component == .hour ? 12 : 60
+        return (componentValue / division) * 360
     }
 }
 
-private struct ClukHand: Shape {
-    var rotationAngle: Angle
-    var length: CGFloat
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.midY))
-        path.addLine(to: CGPoint(x: rect.midX + cos(rotationAngle.radians - .pi / 2) * length,
-                                 y: rect.midY + sin(rotationAngle.radians - .pi / 2) * length))
-        return path
-    }
-}
-
+#if DEBUG
 #Preview {
-    ClukView(now: .constant(.init()))
+    ClukView(date: Date())
 }
+#endif

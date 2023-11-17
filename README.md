@@ -73,4 +73,4 @@ Contributions are welcome! If you'd like to contribute, please fork the reposito
 ClukUI is available under the MIT license. See the LICENSE file for more info.
 
 ## Contact
-For support or queries, please reach out to [clukui@pierrejanineh.com].
+For support or queries, please reach out to clukui@pierrejanineh.com.
