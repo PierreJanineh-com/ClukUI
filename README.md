@@ -28,10 +28,8 @@ import SwiftUI
 import ClukUI
 
 struct ContentView: View {
-    @State private var date: Date = .now
-
     var body: some View {
-        ClukView(date: $date)
+        ClukView(date: .now)
         ClukView() //With no value for default Date()
     }
 }
