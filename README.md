@@ -1,5 +1,8 @@
 # ClukUI
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FPierreJanineh-com%2FClukUI%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/PierreJanineh-com/ClukUI)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FPierreJanineh-com%2FClukUI%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/PierreJanineh-com/ClukUI)
+
 ## Overview
 ClukUI is a Swift package designed to provide elegant and easy-to-integrate clock visualizations for SwiftUI applications. Perfect for apps that require time-related components with a sleek and modern design.
 
@@ -13,7 +16,7 @@ ClukUI is a Swift package designed to provide elegant and easy-to-integrate cloc
 ## Requirements
 - iOS 13.0+ / macOS 10.14+ / tvOS 13.0+
 - Xcode 12.0+
-- Swift 5.3+
+- Swift 5.9+
 
 ## Installation
 To install ClukUI, simply add it to your project as a Swift Package:
