@@ -13,7 +13,8 @@ internal struct ClukHand: Shape {
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: rect.midX, y: rect.midY))
+        path.move(to: CGPoint(x: rect.midX,
+                              y: rect.midY))
         path.addLine(to: CGPoint(x: rect.midX + cos(rotationAngle.radians - .pi / 2) * length,
                                  y: rect.midY + sin(rotationAngle.radians - .pi / 2) * length))
         return path
