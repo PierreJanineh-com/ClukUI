@@ -31,7 +31,8 @@ struct ContentView: View {
     @State private var date: Date = .now
 
     var body: some View {
-        ClukView(now: $date)
+        ClukView(date: $date)
+        ClukView() //With no value for default Date()
     }
 }
 ```
