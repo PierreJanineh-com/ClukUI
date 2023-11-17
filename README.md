@@ -39,13 +39,13 @@ struct ContentView: View {
 ### Version: `PRE-RELEASE`
 **Developed Features:**
 - **Basic Clock Visualization**: The package currently includes `ClukView`, a SwiftUI view that visualizes a simple analog clock. This view displays the current time with hour, minute, and second hands.
-- **Customizability**: Users can customize the displayed time by binding a Date variable to ClukView.
+- **Customizability**: Users can customize the displayed time by passing a Date variable to ClukView.
 - **Cross-Platform Support**: The clock visualization is compatible with iOS, tvOS, and macOS platforms, adhering to adaptive design principles for each platform.
 - **Environment Integration**: Designed for seamless integration into SwiftUI applications.
 
 **Code Implementation:**
 - The package uses SwiftUI to create the clock visualization.
-- A `@Binding` property for the current time allows the clock to be updated in real-time.
+- A `@State` property for the current time allows the clock to be updated in real-time.
 - Custom struct `ClukHand` is used to draw the clock hands.
 
 ## Future Development Roadmap
